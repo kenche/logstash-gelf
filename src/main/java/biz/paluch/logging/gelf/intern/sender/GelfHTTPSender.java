@@ -5,6 +5,7 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 import biz.paluch.logging.gelf.intern.ErrorReporter;
 import biz.paluch.logging.gelf.intern.GelfMessage;
@@ -57,6 +58,14 @@ public class GelfHTTPSender implements GelfSender {
             connection.setDoOutput(true);
             connection.setRequestMethod("POST");
             connection.addRequestProperty("Content-type", "application/json");
+
+            String userInfo = url.getUserInfo(); // contains user:password
+            if (userInfo != null) {
+                byte[] encodedBytes = Base64.getEncoder()
+                        .encode(userInfo.getBytes());
+                String encodedString = new String(encodedBytes);
+                connection.setRequestProperty("Authorization", "Basic " + encodedString);
+            }
 
             OutputStream outputStream = connection.getOutputStream();
             outputStream.write(message.toJson().getBytes(StandardCharsets.UTF_8));

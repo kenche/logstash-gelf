@@ -10,7 +10,7 @@
 
     <groupId>biz.paluch.logging</groupId>
     <version>1.14.2-SNAPSHOT</version>
-    <artifactId>logstash-gelf</artifactId>
+    <artifactId>logstash-gelf-java8</artifactId>
 
     <name>logstash logging connectors</name>
     <url>https://github.com/mp911de/logstash-gelf/</url>
@@ -50,8 +50,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven.compiler.target>1.7</maven.compiler.target>
-        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
         <logstash-gelf-release-version>1.14.1</logstash-gelf-release-version>
 
         <github.site.upload.skip>true</github.site.upload.skip>
@@ -250,7 +250,7 @@
                         <configuration>
                             <signature>
                                 <groupId>org.codehaus.mojo.signature</groupId>
-                                <artifactId>java17</artifactId>
+                                <artifactId>java18</artifactId>
                                 <version>1.0</version>
                             </signature>
                         </configuration>
